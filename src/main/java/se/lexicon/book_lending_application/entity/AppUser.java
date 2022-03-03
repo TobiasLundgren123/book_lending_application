@@ -1,11 +1,9 @@
 package se.lexicon.book_lending_application.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Objects;
+
 
 @Entity
 public class AppUser {
@@ -16,6 +14,9 @@ public class AppUser {
     private String username;
     private String password;
     private LocalDate regDate;
+
+    @OneToOne(cascade = CascadeType.ALL,
+                fetch = FetchType.EAGER)
     private Details userDetails;
 
     public AppUser(int appUserId, String username, String password, LocalDate regDate, Details userDetails) {
